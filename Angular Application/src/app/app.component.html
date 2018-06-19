@@ -1,0 +1,68 @@
+<!-- 
+Angular 2 CRUD application using Nodejs
+@autthor Shashank Tiwari
+-->
+<div class="app-heading">
+	<h2>
+		{{title}}
+	</h2>
+</div>
+
+<div class="container">
+	
+	<div class="app-from">
+		<form  (ngSubmit)="submit()" [formGroup]="userForm" novalidate>			
+			<div class="form-group app-from-group">
+				<label>Username</label>
+				<input type="text" name="username" class="form-control" placeholder="Enter your Username" formControlName='username' autocomplete="off">
+				<div class="feedback" *ngIf="!userForm.controls['username'].valid && (userForm.controls['username'].dirty || userForm.controls['username'].touched)">
+					<span *ngIf="userForm.controls['username'].errors.required">
+						Username is required
+					</span>
+				</div>
+			</div>
+			<div class="form-group app-from-group">
+				<label>Email</label>
+				<input type="email" name="email" class="form-control" placeholder="Enter your Email" formControlName='email'  autocomplete="off">
+				<div class="feedback" *ngIf="!userForm.controls['email'].valid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+						Email is required in Proper format
+				</div>
+			</div>			
+			<div class="form-group app-from-group">
+				<label>Country</label>
+				<input type="country" name="country" class="form-control" placeholder="Enter your Country" formControlName='country'  autocomplete="off">
+				<div class="feedback" *ngIf="!userForm.controls['country'].valid && (userForm.controls['country'].dirty || userForm.controls['country'].touched)">
+					<span *ngIf="userForm.controls['country'].errors.required">
+						Country is required
+					</span>
+				</div>
+			</div>
+		
+			<div class="form-group">
+				<label>&nbsp;</label>
+				<br/>
+				<button type='submit' *ngIf='selectedUserId !== null' class="btn btn-primary form-submit-button" [disabled]="!userForm.valid">Update User</button>
+				&nbsp;<button *ngIf='selectedUserId !== null' class="btn btn-primary form-submit-button" (click)='resetForm()'>Reset</button>
+				<button type='submit' *ngIf='selectedUserId === null' class="btn btn-primary form-submit-button" [disabled]="!userForm.valid">Add User</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="users-list" *ngIf='usersList.length !== 0'>
+		<h3 class="user-list-heading">List of Users</h3>
+		<hr>		
+		<div class="list-of-users">
+			<ul class="list-group">
+				<li *ngFor="let user of usersList" 
+					class="list-group-item" 
+					(click)="selectedUser(user)" 
+					[class.active]="isSelected(user)"
+				>
+					<span>{{ user.username}}</span>
+					<span class="deleteUsers" (click)="deleteUser(user.id)">X</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+  
+</div>
