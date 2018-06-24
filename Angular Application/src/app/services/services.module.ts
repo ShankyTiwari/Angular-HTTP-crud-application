@@ -1,3 +1,8 @@
+/*
+* Angular 2 CRUD application using Nodejs
+* @autthor Shashank Tiwari
+*/
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

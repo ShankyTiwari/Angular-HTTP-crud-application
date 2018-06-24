@@ -1,8 +1,13 @@
+/*
+* Angular 2 CRUD application using Nodejs
+* @autthor Shashank Tiwari
+*/
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormSupportingModulesModule } from './modules/form-supporting-modules/form-supporting-modules.module';
+import { FormSupportingModule } from './modules/form-supporting/form-supporting.module';
 import { ServicesModule } from './services/services.module';
 
 import { AppComponent } from './app.component';
@@ -13,8 +18,8 @@ import { AppComponent } from './app.component';
 	],
 	imports: [
 		BrowserModule,
-		FormSupportingModulesModule,
 		HttpClientModule,
+		FormSupportingModule,
 		ServicesModule
 	],
 	providers: [],

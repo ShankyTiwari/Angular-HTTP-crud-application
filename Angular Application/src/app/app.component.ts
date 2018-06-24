@@ -1,3 +1,8 @@
+/**
+ *  Angular 2 CRUD application using Nodejs
+ *  @autthor Shashank Tiwari
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
@@ -58,7 +63,7 @@ export class AppComponent implements OnInit {
 		this.userForm.controls['country'].setValue(user.country);
 	}
 
-	isSelected(user: User) {
+	isSelected(user: User): boolean {
 		return this.selectedUserId === user.id ? true : false;
 	}
 
